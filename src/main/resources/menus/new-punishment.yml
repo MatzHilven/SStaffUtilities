@@ -1,0 +1,33 @@
+# Opens when the "new punishment" button is clicked in the main punishment menu.
+new-punishment:
+  name: "&e&lPunish: &f%name%"
+  size: 6
+  # The stained glass divider slots in the GUI.
+  filler:
+    material: STAINED_GLASS_PANE
+    data: 7
+    name: "&7"
+    lore: [ ]
+    slot: [ 9,10,11,12,13,14,15,16,17 ]
+  # The slots to display offences. Use the information from the offences list.
+  offences:
+    slot: [ 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53 ]
+  items:
+    # Displays the previous page of offences.
+    left-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==
+      name: "&e&lPrevious Page"
+      lore: [ ]
+      slot: 0
+    # Creates a custom punishment.
+    custom-punishment:
+      material: PAPER
+      name: "&e&lCustom Punishment"
+      lore: [ ]
+      slot: 4
+    # Displays the next page of offences.
+    right-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTliZjMyOTJlMTI2YTEwNWI1NGViYTcxM2FhMWIxNTJkNTQxYTFkODkzODgyOWM1NjM2NGQxNzhlZDIyYmYifX19
+      name: "&e&lNext Page"
+      lore: [ ]
+      slot: 8

@@ -1,0 +1,25 @@
+# Opens when a head has been right clicked in the linked accounts GUI.
+remove-account:
+  name: "&e&lRemove: &f%name%"
+  size: 1
+  items:
+    # Removes the account.
+    confirm:
+      material: STAINED_CLAY
+      data: 5
+      name: "&e&lConfirm"
+      slot: 1
+    # The head of the player.
+    player-head:
+      material: SKULL_ITEM
+      name: "&e&l%name%"
+      lore:
+        - "&7Are you sure you would like to remove"
+        - "&e%name% &7from this IP address."
+      slot: 4
+    # Cancels the removal.
+    cancel:
+      material: STAINED_CLAY
+      data: 14
+      name: "&e&lCancel"
+      slot: 7

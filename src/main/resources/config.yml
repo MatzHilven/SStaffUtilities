@@ -1,0 +1,378 @@
+# BungeeCord Settings
+server: HUB
+
+
+# This section of the configuration file is for generic options.
+
+# This is the number of accounts allowed on one IP address.
+account-limit: 5
+
+alert:
+  evasion: true # staffutilities.staff.alert.linked
+  vpn: true # staffutilities.staff.alert.linked
+  banned-join: true # staffutilities.staff.alert.joined
+
+# This section of the configuration file defines the offences and severity levels
+# and what punishments are executed for each severity level of each offence.
+
+offences:
+  # This is the ID of the punishment. Should NOT be case sensitive.
+  Spam:
+    # The name of the item in GUIs.
+    name: "&e&lSpam"
+    # The lore of the item in GUIs.
+    lore: [ ]
+    # The display order for in GUIs. Two offences should NOT have the same order value.
+    order: 1
+    # This defines whether it is a gameplay or chat offence.
+    type: Chat
+    # This is the priority of the offence - used for working out which punishments are more severe.
+    # Two punishments CAN have the same priority. Higher numbers have a higher priority.
+    priority: 1
+    # The severity levels for the punishment.
+    severity-levels:
+      '1':
+        type: ipmute
+        duration: 1h
+        reason: "Spam [1]"
+      '2':
+        type: ipmute
+        duration: 1d
+        reason: "Spam [2]"
+      '3':
+        type: ipmute
+        duration: 3d
+        reason: "Spam [3]"
+      '4':
+        type: ipmute
+        duration: permanent
+        reason: "Spam [4]"
+  InappropriateLanguage:
+    name: "&e&lInappropriate Language"
+    lore: [ ]
+    order: 2
+    type: Chat
+    priority: 3
+    severity-levels:
+      '1':
+        type: ipmute
+        duration: 2h
+        reason: "Inappropriate Language [1]"
+      '2':
+        type: ipmute
+        duration: 3d
+        reason: "Inappropriate Language [2]"
+      '3':
+        type: ipmute
+        duration: 7d
+        reason: "Inappropriate Language [3]"
+      '4':
+        type: ipmute
+        duration: permanent
+        reason: "Inappropriate Language [4]"
+  LightAdvertising:
+    name: "&e&lLight Advertising"
+    lore: [ ]
+    order: 3
+    type: Chat
+    priority: 2
+    severity-levels:
+      '1':
+        type: ipmute
+        duration: 2h
+        reason: "Light Advertising [1]"
+      '2':
+        type: ipmute
+        duration: 1d
+        reason: "Light Advertising [2]"
+      '3':
+        type: ipmute
+        duration: 3d
+        reason: "Light Advertising [3]"
+      '4':
+        type: ipmute
+        duration: permanent
+        reason: "Light Advertising [4]"
+  SuicidalRemarks:
+    name: "&e&lSuicidal Remarks"
+    lore: [ ]
+    order: 4
+    type: Chat
+    priority: 4
+    severity-levels:
+      '1':
+        type: ipmute
+        duration: 2d
+        reason: "Suicidal Remarks [1]"
+      '2':
+        type: ipmute
+        duration: 7d
+        reason: "Suicidal Remarks [2]"
+      '3':
+        type: ipmute
+        duration: permanent
+        reason: "Suicidal Remarks [3]"
+  Discrimination:
+    name: "&e&lDiscrimination"
+    lore: [ ]
+    order: 5
+    priority: 5
+    type: Chat
+    severity-levels:
+      '1':
+        type: ipmute
+        duration: 2d
+        reason: "Discrimination [1]"
+      '2':
+        type: ipmute
+        duration: 7d
+        reason: "Discrimination [2]"
+      '3':
+        type: ipmute
+        duration: permanent
+        reason: "Discrimination [3]"
+  Advertising:
+    name: "&e&lAdvertising"
+    lore: [ ]
+    order: 6
+    priority: 6
+    type: Chat
+    severity-levels:
+      '1':
+        type: ipmute
+        duration: permanent
+        reason: "Advertising [1]"
+  CommandAbuse:
+    name: "&e&lCommand Abuse"
+    lore: [ ]
+    order: 7
+    priority: 1
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 2h
+        reason: "Command Abuse [1]"
+      '2':
+        type: ipban
+        duration: 1d
+        reason: "Command Abuse [2]"
+      '3':
+        type: ipban
+        duration: 3d
+        reason: "Command Abuse [3]"
+      '4':
+        type: ipban
+        duration: permanent
+        reason: "Command Abuse [4]"
+  MuteEvasion:
+    name: "&e&lMute Evasion"
+    lore: [ ]
+    order: 8
+    priority: 2
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 6h
+        reason: "Mute Evasion [1]"
+      '2':
+        type: ipban
+        duration: 1d
+        reason: "Mute Evasion [2]"
+      '3':
+        type: ipban
+        duration: 3d
+        reason: "Mute Evasion [3]"
+      '4':
+        type: ipban
+        duration: permanent
+        reason: "Mute Evasion [4]"
+  InappropriateBuilds:
+    name: "&e&lInappropriate Builds"
+    lore: [ ]
+    order: 9
+    priority: 3
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 1d
+        reason: "Inappropriate Builds [1]"
+      '2':
+        type: ipban
+        duration: 3d
+        reason: "Inappropriate Builds [2]"
+      '3':
+        type: ipban
+        duration: 7d
+        reason: "Inappropriate Builds [3]"
+      '4':
+        type: ipban
+        duration: permanent
+        reason: "Inappropriate Builds [4]"
+  BugAbuse:
+    name: "&e&lBug Abuse"
+    lore: [ ]
+    order: 10
+    priority: 4
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 3d
+        reason: "Bug Abuse [1]"
+      '2':
+        type: ipban
+        duration: 7d
+        reason: "Bug Abuse [2]"
+      '3':
+        type: ipban
+        duration: permanent
+        reason: "Bug Abuse [3]"
+  Scamming:
+    name: "&e&lScamming"
+    lore: [ ]
+    order: 11
+    priority: 4
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 3d
+        reason: "Scamming [1]"
+      '2':
+        type: ipban
+        duration: 7d
+        reason: "Scamming [2]"
+      '3':
+        type: ipban
+        duration: permanent
+        reason: "Scamming [3]"
+  IRLCrossServerTrading:
+    name: "&e&lIRL/Cross-Server Trading"
+    lore: [ ]
+    order: 12
+    priority: 4
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 3d
+        reason: "IRL/Cross-Server Trading [1]"
+      '2':
+        type: ipban
+        duration: 7d
+        reason: "IRL/Cross-Server Trading [2]"
+      '3':
+        type: ipban
+        duration: permanent
+        reason: "IRL/Cross-Server Trading [3]"
+  IllegalModifications:
+    name: "&e&lIllegal Modifications"
+    lore: [ ]
+    order: 13
+    priority: 5
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: 14d
+        reason: "Illegal Modifications [1]"
+      '2':
+        type: ipban
+        duration: permanent
+        reason: "Illegal Modifications [2]"
+  InappropriateIGNSkin:
+    name: "&e&lInappropriate IGN/Skin"
+    lore: [ ]
+    order: 14
+    priority: 6
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: permanent
+        reason: "Inappropriate IGN/Skin [1]"
+  VPNUsage:
+    name: "&e&lVPN Usage"
+    lore: [ ]
+    order: 15
+    priority: 6
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: ipban
+        duration: permanent
+        reason: "VPN Usage [1]"
+  DDoSIPGrabbing:
+    name: "&e&lDDoS/IP Grabbing"
+    lore: [ ]
+    order: 16
+    priority: 7
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: blacklist
+        duration: permanent
+        reason: "DDoS/IP Grabbing [1]"
+  ReleasingPersonalInformation:
+    name: "&e&lReleasing Personal Information"
+    lore: [ ]
+    order: 17
+    priority: 8
+    type: GamePlay
+    severity-levels:
+      '1':
+        type: blacklist
+        duration: permanent
+        reason: "Releasing Personal Information [1]"
+
+
+# This is the item information for displaying punishments.
+punishment-information-item:
+  # Items used for each type of punishment.
+  kick: LEATHER_BOOTS
+  mute: SIGN
+  ipmute: SIGN
+  ban: BARRIER
+  ipban: BARRIER
+  blacklist: BEDROCK
+  # The name of the punishment information item.
+  name: "&e&l%reason%" # The punishment reason.
+  # The lore used for the punishment information item.
+  lore:
+    - "&eType: &f%type%" # Either "Mute", "IP Mute", "Ban", "IP Ban", "Blacklist", "Report Ban".
+    - "&eStaff: &f%staff%" # The name of the staff member who executed the punishment.
+    - "&eDuration: &f%duration%" # Duration of the punishment ("N/A" for kicks).
+    - "&eDate: &f%date%" # Date of the punishment.
+    - "&eExpiry: &f%expiry%" # Date of the expiry of the punishment ("N/A" for kicks).
+    - "&eStatus: %status%" # Either "&aActive", "&cExpired", or "&7Removed" ("&fN/A" for kicks).
+  # If an account is affected by a punishment, the following should be added to the lore
+  # to show that the punishment does not actually belong to that user, but rather they
+  # are affected by the punishment.
+  # %player% is the name of the player who is actually punished.
+  affected-punishment:
+    - "&c&oAffected from %player%."
+
+# This is the item information for displaying punishments in the staff punishment history GUI.
+staff-punishment-information-item:
+  # The name of the punishment information item.
+  name: "&e&l%name%" # The name of the player punished.
+  # The lore used for the punishment information item.
+  lore:
+    - "&eType: &f%type%" # Either "Mute", "IP Mute", "Ban", "IP Ban", "Blacklist", "Report Ban".
+    - "&eReason: &f%reason%" # The reason of the punishment.
+    - "&eDuration: &f%duration%" # Duration of the punishment ("N/A" for kicks).
+    - "&eDate: &f%date%" # Date of the punishment.
+    - "&eExpiry: &f%expiry" # Date of the expiry of the punishment ("N/A" for kicks).
+    - "&eStatus: %status%" # Either "&aActive", "&cExpired", or "&7Removed" ("&fN/A" for kicks).
+
+punishment-history-item:
+  # Items used for each type of punishment.
+  kick: LEATHER_BOOTS
+  mute: SIGN
+  ipmute: SIGN
+  ban: BARRIER
+  ipban: BARRIER
+  blacklist: BEDROCK

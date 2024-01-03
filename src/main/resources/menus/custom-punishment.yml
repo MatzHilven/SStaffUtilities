@@ -1,0 +1,30 @@
+# Opens when the custom punishment item is selected from the new punishment GUI.
+custom-punishment:
+  name: "&e&lCustom Punishment"
+  size: 1
+  items:
+    # All materials are used from the "punishment-information-item" list.
+    kick:
+      name: "&e&lKick"
+      lore: [ ]
+      slot: 1
+    mute:
+      name: "&e&lMute"
+      lore: [ ]
+      slot: 2
+    ipmute:
+      name: "&e&lIP Mute"
+      lore: [ ]
+      slot: 3
+    ban:
+      name: "&e&lBan"
+      lore: [ ]
+      slot: 5
+    ipban:
+      name: "&e&lIP Ban"
+      lore: [ ]
+      slot: 6
+    blacklist:
+      name: "&e&lBlacklist"
+      lore: [ ]
+      slot: 7

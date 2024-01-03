@@ -1,11 +1,12 @@
 package com.matzhilven.staffutilities.punishment
 
+import com.matzhilven.staffutilities.punishment.offence.Offence
 import java.sql.Timestamp
 import java.util.*
 
 data class Punishment(
     val id: Int,
-    val type: PunishmentType,
+    val type: Offence,
     val punished: UUID,
     val punisher: UUID,
     val start: Timestamp,

@@ -1,0 +1,53 @@
+# Opens when the linked accounts item is clicked on the main menu.
+linked-accounts:
+  name: "&e&lAccounts: &f%name%"
+  size: 6
+  # The stained glass divider slots in the GUI.
+  filler:
+    material: STAINED_GLASS_PANE
+    data: 7
+    name: "&7"
+    lore: [ ]
+    slot: [ 9,10,11,12,13,14,15,16,17 ]
+  # The slots to display accounts.
+  accounts:
+    name: "&e&l%name%"
+    lore:
+      - "&eLast Seen: &f%date%" # Date and time of last seen (last logout or current time if currenly online).
+      - "&eOnline: &f%online%" # Either "Yes" or "No".
+      - "&eMuted: &f%muted%" # Either "Yes" or "No".
+      - "&eBanned: &f%banned%" # Either "Yes" or "No".
+    slot: [ 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53 ]
+    connected-through:
+      - "&c&oConnected through %ip%."
+  items:
+    # Displays the previous page of accounts.
+    left-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==
+      name: "&e&lPrevious Page"
+      lore: [ ]
+      slot: 0
+    # Displays all connected accounts in alphabetical order.
+    filter-connected:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWJlOTgzZWM0NzgwMjRlYzZmZDA0NmZjZGZhNDg0MjY3NjkzOTU1MWI0NzM1MDQ0N2M3N2MxM2FmMThlNmYifX19
+      name: "&e&lFilter: &fConnected"
+      lore: [ ]
+      slot: 2
+    # Displays all removed punishments.
+    player-head:
+      material: SKULL_ITEM
+      name: "&e&l%name%"
+      lore: [ ]
+      slot: 4
+    # Displays previously linked accounts.
+    filter-previous:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTBhNzk4OWI1ZDZlNjIxYTEyMWVlZGFlNmY0NzZkMzUxOTNjOTdjMWE3Y2I4ZWNkNDM2MjJhNDg1ZGMyZTkxMiJ9fX0=
+      name: "&e&lFilter: &fPrevious"
+      lore: [ ]
+      slot: 6
+    # Displays the next page of accounts.
+    right-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTliZjMyOTJlMTI2YTEwNWI1NGViYTcxM2FhMWIxNTJkNTQxYTFkODkzODgyOWM1NjM2NGQxNzhlZDIyYmYifX19
+      name: "&e&lNext Page"
+      lore: [ ]
+      slot: 8

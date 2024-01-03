@@ -1,0 +1,26 @@
+# Opens when an offence has been selected from the new punishment GUI.
+confirm-new-punishment:
+  name: "&e&lPunish: &f%name%"
+  size: 3
+  items:
+    # Executes the new punishment.
+    confirm:
+      material: STAINED_CLAY
+      data: 5
+      name: "&e&lConfirm"
+      slot: 10
+    # Displays the punishment information. Uses the "punishment-information-item" material.
+    punishment-information:
+      material: PAPER
+      name: "&e&lPunishment Details"
+      lore:
+        - "&eOffence: &f%offence%" # The name of the offence.
+        - "&eType: &f%type%" # Either "Mute", "IP Mute", "Ban", "IP Ban", "Blacklist", "Report Ban".
+        - "&eDuration: &f%duration%" # Duration of the punishment ("N/A" for kicks).
+      slot: 13
+    # Cancels the new punishment.
+    cancel:
+      material: STAINED_CLAY
+      data: 14
+      name: "&e&lCancel"
+      slot: 16

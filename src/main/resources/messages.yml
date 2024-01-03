@@ -1,0 +1,64 @@
+# Messages for invalid actions or permissions
+invalid-sender: "&cThis command can only be executed by a player!"  # Prompt for player-only command
+invalid-permissions: "&cYou don't have the correct permissions to execute this command!"  # Permissions issue
+invalid-player: "&cCannot find that player!"  # Player not found
+invalid-amount: "&cInvalid amount specified!"  # Incorrect amount
+invalid-id: "&cInvalid id specified!"  # Invalid ID
+invalid-punishment: "&cCannot find a punishment with id %id% for player %player%!"  # Punishment not found
+maximum-severity: "&cPlayer has already been punished with the highest severity level!"  # Maximum punishment level reached
+already-removed: "&cThis punishment has already been removed!"  # Punishment already removed
+lower-priority: "&cThis player has already been punished for a higher priority!"  # Higher priority punishment exists
+same-priority: "&cThis player has already been punished for the same priority!"  # Same priority punishment exists
+
+# Usage messages for different commands
+punish-usage: "&cUsage: /punish <player> [id]"  # Usage for /punish command
+bot-usage: "&c/bot <player>"  # Usage for /bot command
+staffhistory-usage: "&c/staffhistory <player>"  # Usage for /staffhistory command
+staffrollback-usage: "&c/staffrollback <player> [time/number]"  # Usage for /staffrollback command
+ipupdate-usage: "&cUsage: /ipupdate <player> <ip>"  # Usage for /ipupdate command
+
+# Messages for successful actions
+successfully-punished: "&8[&c&l!&8] &e%player% &7has been permanently punished for &e%reason% &fby &e%staff%&7."  # Successful permanent punishment
+successfully-punished-temp: "&8[&c&l!&8] &e%player% &7has been punished for &e%reason% &7for &e%duration% &7by &e%staff%."  # Successful temporary punishment
+custom-punishment: # Messages for custom punishment creation
+  enter-reason: "&aPlease enter the reason or enter `stop` to stop adding the punishment."  # Prompt for reason entry
+  set-reason: "&aReason has been set to %reason%!"  # Confirmation for reason set
+  enter-duration: "&aPlease enter the duration (e.g. 1d, 1w, 1y, permanent) or enter `stop` to stop adding the punishment."  # Prompt for duration entry
+  set-duration: "&aDuration has been set to %duration%!"  # Confirmation for duration set
+  cancelled: "&cThe custom punishment has been cancelled."  # Custom punishment creation cancelled
+
+# Messages for removed punishments
+removed-punishment-soft: "&aSuccessfully soft-removed punishment!"  # Soft removal success
+removed-punishment-hard: "&aSuccessfully hard-removed punishment!"  # Hard removal success
+
+# Mute-related messages
+muted: "&8[&c&l!&8] &7You are permanently muted."  # Permanent mute message
+muted-temp: "&8[&c&l!&8] &7You are muted for &e%expiration%."  # Temporary mute message
+affected-muted: "&8[&c&l!&8] &7You are currently affected by a permanent mute issued %player%."  # Affected by permanent mute
+affected-muted-temp: "&8[&c&l!&8] &7You are currently affected by a mute for &e%expiration% &7%player%."  # Affected by temporary mute
+muted-chat: "&c&bChat has been muted!"  # Chat muted
+unmuted-chat: "&a&bChat has been unmuted!"  # Chat unmuted
+
+# Other miscellaneous messages
+chat-muted: "&cChat is muted!"  # Chat already muted
+chat-cleared: "&aChat has been cleared by %player%."  # Chat cleared by a player
+removed-account: "&aSuccessfully unlinked %player%!"  # Account unlink success
+ban-message: "&cYou have been banned for %reason% until %end-date%! Please ..."  # Ban message
+perm-ban-message: "&cYou have been permanently banned for %reason%! Please ..."  # Permanent ban message
+affected-ban-message-temp: "&e&lParagon MC\n&fAn account that you are linked to (%player%) has been banned.\n&7\n&eReason: &f%reason%\n&fThis ban will expire in &e%end-date%&f.\n&7\n&fYou can appeal your punishment at &e&nhttps://paragonmc.net/appeal&f."  # Affected by temporary ban message
+affected-ban-message: "&e&lParagon MC\n&fAn account that you are linked to (%player%) has been permanently banned.\n&7\n&eReason: &f%reason%\n&7\n&fYou can appeal your punishment at &e&nhttps://paragonmc.net/appeal&f."  # Affected by permanent ban message
+kick-message: "&cYou have been kicked for %reason%!"  # Kick message
+mute-message: "&cYou have been muted for %reason% until %end-date%!"  # Mute message
+perm-mute-message: "&cYou have been permanently muted for %reason%!"  # Permanent mute message
+affected-mute-message: "&8[&e&l!&8] &7An account that you are linked to (%player%) has been permanently muted for &e%reason%."  # Affected by permanent mute message
+affected-mute-message-temp: "&8[&e&l!&8] &7An account that you are linked to (%player%) has been muted for &e%reason% &7for &e%end-date%."  # Affected by temporary mute message
+cancelled-removal: "&cCancelled removing the account!"  # Cancelled removal message
+removed-punishments-number: "&aSuccessfully removed the last %amount% punishments by %player%!"  # Removed last punishments by a player
+removed-punishments-date: "&aSuccessfully removed all punishments by %player% after %date%!"  # Removed all punishments by a player after a date
+updated-ip: "&aSuccessfully set %player%'s ip to %ip%!"  # Updated player's IP message
+affect-ip: "&aThis punishment now affects the linked accounts!"  # Punishment now affects linked accounts
+unaffect-ip: "&aThis punishment now doesn't affect the linked accounts!"  # Punishment no longer affects linked accounts
+account-limit: "&cYou already have the maximum accounts on this ip address!"  # Account limit reached message
+
+# Messages related to join and IP actions
+banned-join: "&7%player% tried to join but is currently banned!"  # Attempted join by a banned player

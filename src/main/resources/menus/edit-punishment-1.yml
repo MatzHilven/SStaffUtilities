@@ -1,0 +1,64 @@
+# Opens when a ban, blacklist, or mute punishment (not a kick - this is a different GUI) is right clicked in the punishment GUI.
+edit-punishment-1:
+  name: "&e&lEdit: &f%name%"
+  size: 1
+  items:
+    # Displays the punishment information. Uses the "punishment-information-item" material, name and lore.
+    punishment-information:
+      slot: 1
+    # Toggles the item between an IP and account punishment and allows editing of affected accounts (if applicable).
+    # Performs a different action depending on what type of punishment it is.
+    punishment-options:
+      # Shown for mutes and bans - turns them into IP punishment.
+      account-punishment:
+        material: COMMAND
+        name: "&e&lAffect IP"
+        lore:
+          - "&7Click to make this an IP-based punishment."
+          - "&7This will immediately affect all accounts"
+          - "&7connected to &e%name%'s &7IP address."
+        slot: 2
+      # Shown for IP mutes and IP bans - turns them into account punishments OR opens affected accounts GUI.
+      ip-punishment:
+        material: COMMAND
+        name: "&e&lUnaffect IP/Edit Effect"
+        lore:
+          - "&7Right click to make this an account-based"
+          - "&7punishment. This will immediately unaffect all"
+          - "&7accounts connected to &e%name%'s &7IP address."
+          - "&7"
+          - "&7Left click to edit the accounts affected"
+          - "&7by this punishment."
+        slot: 2
+      # Shown for blacklists - opens the affected accounts GUI.
+      blacklist:
+        material: COMMAND
+        name: "&e&lEdit Effect"
+        lore:
+          - "&7Left click to edit the accounts affected"
+          - "&7by this punishment."
+        slot: 2
+    # Removes the punishment from the player.
+    remove-punishment:
+      material: CHEST
+      name: "&e&lRemove Punishment"
+      lore: [ ]
+      slot: 3
+    # Edits the remaining duration of the punishment.
+    edit-duration:
+      material: WATCH
+      name: "&e&lEdit Duration"
+      lore: [ ]
+      slot: 5
+    # Edits the reason of the punishment.
+    edit-reason:
+      material: BOOK_AND_QUILL
+      name: "&e&lEdit Reason"
+      lore: [ ]
+      slot: 6
+    # Opens the edit history GUI.
+    edit-history:
+      material: BOOK
+      name: "&e&lEdit History"
+      lore: [ ]
+      slot: 7

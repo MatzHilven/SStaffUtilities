@@ -1,0 +1,76 @@
+# Opens when the connection history item is selected from the main GUI.
+connection-history:
+  name: "&e&lConnections: &f%name%"
+  size: 6
+  # The stained glass divider slots in the GUI.
+  filler:
+    material: STAINED_GLASS_PANE
+    data: 7
+    name: "&7"
+    lore: [ ]
+    slot: [ 9,10,11,12,13,14,15,16,17 ]
+  # The slots to display login history.
+  login-session:
+    material: SIGN
+    name: "&e&lSession #%number%"
+    lore:
+      - "&eLogin Time: &f%login%" # Date and time of session login.
+      - "&eLogout Time: &f%logout%" # Date and time of session logout ("N/A" if they are currently online).
+      - "&eSession Time: &f%session%" # Duration of the session.
+    slot: [ 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53 ]
+  # The slots to display IP history. Displays which accounts are currently linked to it when clicked.
+  ip-session:
+    material: PAPER
+    name: "&e&l%ip%" # Either "IP #%number%" or "xxx.xxx.xxx.xxx" (the actual IP) depending on whether the user has the permission to view IP addresses.
+    lore:
+      - "&eAssociated Accounts: &f%associated%" # The number of accounts which have used that IP address.
+      - "&eLinked Accounts: &f%linked%" # The number of accounts which are currently linked to that IP address.
+    slot: [ 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53 ]
+  # The slots to display the accounts that have connected with an IP before when an IP is clicked from the IP history menu.
+  ip-links:
+    name: "&e&l%name%"
+    lore:
+      - "&eLast Login: &f%login%" # Date and time of last login.
+      - "&eLast Association: &f%association%" # Date and time of the last login where the account was connected to the selected IP address.
+    slot: [ 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53 ]
+  items:
+    # Displays the previous page of connections.
+    left-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==
+      name: "&e&lPrevious Page"
+      lore: [ ]
+      slot: 0
+    # Displays connection history.
+    login-history:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzE5ZjUwYjQzMmQ4NjhhZTM1OGUxNmY2MmVjMjZmMzU0MzdhZWI5NDkyYmNlMTM1NmM5YWE2YmIxOWEzODYifX19
+      name: "&e&lLogin History"
+      lore: [ ]
+      slot: 2
+    # Displays the player's head.
+    player-head:
+      material: SKULL_ITEM
+      name: "&e&l%name%"
+      lore: [ ]
+      slot: 4
+    # Displays IP history.
+    ip-history:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDYxNzhhZDUxZmQ1MmIxOWQwYTM4ODg3MTBiZDkyMDY4ZTkzMzI1MmFhYzZiMTNjNzZlN2U2ZWE1ZDMyMjYifX19
+      name: "&e&lIP History"
+      lore: [ ]
+      slot: 6
+    # Displays the next page of connections.
+    right-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTliZjMyOTJlMTI2YTEwNWI1NGViYTcxM2FhMWIxNTJkNTQxYTFkODkzODgyOWM1NjM2NGQxNzhlZDIyYmYifX19
+      name: "&e&lNext Page"
+      lore: [ ]
+      slot: 8
+    filter-connected:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzE5ZjUwYjQzMmQ4NjhhZTM1OGUxNmY2MmVjMjZmMzU0MzdhZWI5NDkyYmNlMTM1NmM5YWE2YmIxOWEzODYifX19
+      name: "&e&lFilter: &fLinked"
+      lore: [ ]
+      slot: 2
+    filter-previous:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTBhNzk4OWI1ZDZlNjIxYTEyMWVlZGFlNmY0NzZkMzUxOTNjOTdjMWE3Y2I4ZWNkNDM2MjJhNDg1ZGMyZTkxMiJ9fX0=
+      name: "&e&lFilter: &fPrevious"
+      lore: [ ]
+      slot: 6

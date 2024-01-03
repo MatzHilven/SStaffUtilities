@@ -1,0 +1,26 @@
+# Opens when a kick punishment (not mute, ban, or blacklist - this is a different GUI) is right clicked in the punishment GUI.
+edit-punishment-2:
+  name: "&e&lEdit: &f%name%"
+  size: 1
+  items:
+    # Displays the punishment information. Uses the "punishment-information-item" material, name and lore.
+    punishment-information:
+      slot: 0
+    # Removes the punishment from the player.
+    remove-punishment:
+      material: CHEST
+      name: "&e&lRemove Punishment"
+      lore: [ ]
+      slot: 2
+    # Edits the reason of the punishment.
+    edit-reason:
+      material: BOOK_AND_QUILL
+      name: "&e&lEdit Reason"
+      lore: [ ]
+      slot: 6
+    # Opens the edit history GUI.
+    edit-history:
+      material: BOOK
+      name: "&e&lEdit History"
+      lore: [ ]
+      slot: 8

@@ -1,0 +1,26 @@
+# Opens when the "remove punishment" button is clicked in the edit punishment GUI.
+remove-punishment:
+  name: "&e&lRemove: &f%name%"
+  size: 1
+  items:
+    # Removes the punishment and keeps it on the player's history.
+    soft-remove:
+      material: STAINED_CLAY
+      data: 5
+      name: "&e&lSoft Remove"
+      lore:
+        - "&7Click to remove the punishment from"
+        - "&e%name% &7but keep it on their record."
+      slot: 1
+    # Completely removes the punishment from the player's history and decreases their severity level.
+    hard-remove:
+      material: STAINED_CLAY
+      data: 14
+      name: "&e&lHard Remove"
+      lore:
+        - "&7Click to remove the punishment from"
+        - "&e%name%'s &7record."
+      slot: 7
+    # Displays the punishment information. Uses the "punishment-information-item" material, name and lore.
+    punishment-information:
+      slot: 4

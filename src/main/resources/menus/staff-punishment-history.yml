@@ -1,0 +1,45 @@
+# Opens when a staff member opens the staff punishment history menu.
+staff-punishment-history:
+  name: "&e&lHistory: &f%name%"
+  size: 6
+  # The stained glass divider slots in the GUI.
+  filler:
+    material: STAINED_GLASS_PANE
+    data: 7
+    name: "&7"
+    lore: [ ]
+    slot: [ 9,10,11,12,13,14,15,16,17 ]
+  # The slots to display punishments in. Uses the "staff-punishment-information-item" material, name and lore.
+  punishments:
+    slot: [ 18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53 ]
+  items:
+    # Displays the previous page of punishments.
+    left-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==
+      name: "&e&lPrevious Page"
+      lore: [ ]
+      slot: 0
+    # Displays all punishments in chronological order (latest first).
+    filter-all:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTY3ZDgxM2FlN2ZmZTViZTk1MWE0ZjQxZjJhYTYxOWE1ZTM4OTRlODVlYTVkNDk4NmY4NDk0OWM2M2Q3NjcyZSJ9fX0=
+      name: "&e&lFilter: &fAll"
+      lore: [ ]
+      slot: 2
+    # Displays all removed punishments.
+    removed-punishments:
+      material: chest
+      name: "&e&lRemoved Punishments"
+      lore: [ ]
+      slot: 4
+    # Displays all offences.
+    filter-offences:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDExZGUxY2FkYjJhZGU2MTE0OWU1ZGVkMWJkODg1ZWRmMGRmNjI1OTI1NWIzM2I1ODdhOTZmOTgzYjJhMSJ9fX0=
+      name: "&e&lFilter: &fOffences"
+      lore: [ ]
+      slot: 6
+    # Displays the next page of punishments.
+    right-arrow:
+      material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTliZjMyOTJlMTI2YTEwNWI1NGViYTcxM2FhMWIxNTJkNTQxYTFkODkzODgyOWM1NjM2NGQxNzhlZDIyYmYifX19
+      name: "&e&lNext Page"
+      lore: [ ]
+      slot: 8

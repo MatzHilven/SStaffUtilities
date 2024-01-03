@@ -1,6 +1,8 @@
-package com.matzhilven.staffutilities.punishment
+package com.matzhilven.staffutilities.punishment.offence
 
-data class PunishmentType(
+import com.matzhilven.staffutilities.punishment.SeverityLevel
+
+data class Offence(
     val configName: String,
     val displayName: String,
     val lore: List<String>,
