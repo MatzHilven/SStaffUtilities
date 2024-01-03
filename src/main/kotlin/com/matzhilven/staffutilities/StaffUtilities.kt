@@ -6,10 +6,10 @@ import org.bukkit.plugin.java.JavaPlugin
 class StaffUtilities : JavaPlugin() {
     override fun onEnable() {
         saveDefaultConfig()
-    
+        // bStats
         Metrics(this, 20628)
     }
-
+    
     override fun onDisable() {
         // Plugin shutdown logic
     }
