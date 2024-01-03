@@ -1,53 +1,52 @@
 # The main punishment menu which loads after executing the command.
-main-menu:
-  # Name of the GUI.
-  name: "&e&l%name%"
-  # Number of rows in the GUI.
-  size: 1
-  # All items that are in the GUI.
-  items:
-    # The player head displaying information on the player.
-    player-head:
-      # Name of the item.
-      name: "&e&l%name%"
-      material: SKULL_ITEM
-      # lore of the item.
-      lore:
-        - "&eStatus: &f%status%" # %status% is either "Online" or "Offline".
-        - "&eMuted: &f%muted%" # %muted% is either "Yes" or "No".
-        - "&eBanned: &f%banned%" # %banned% is either "Yes" or "No".
-      # Position of the item in the GUI.
-      slot: 0
-    # Opens the punishment history GUI.
-    punishment-history:
-      # Material of the item. To use custom heads from https://minecraft-heads.com/, use
-      # the format "head-<headID>". The <headID> should be replaced with the "value" from
-      # https://minecraft-heads.com/. For example, to add the "Oak Wood Left Arrow" head...
-      # material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==
-      material: BOOK
-      # This is the data of the item. Used for items like stained glass panes and coloured wool.
-      data: 0
-      name: "&e&lPunishment History"
-      lore: [ ]
-      slot: 2
-    # Opens the new punishment GUI.
-    new-punishment:
-      material: IRON_AXE
-      data: 0
-      name: "&e&lNew Punishment"
-      lore: [ ]
-      slot: 4
-    # Opens the linked accounts GUI.
-    linked-accounts:
-      material: NAME_TAG
-      data: 0
-      name: "&e&lLinked Accounts"
-      lore: [ ]
-      slot: 6
-    # Opens the connection history GUI.
-    connection-history:
-      material: PAPER
-      data: 0
-      name: "&e&lConnection History"
-      lore: [ ]
-      slot: 8
+# Name of the GUI.
+name: "&e&l%name%"
+# Number of rows in the GUI.
+size: 1
+# All items that are in the GUI.
+items:
+  # The player head displaying information on the player.
+  player-head:
+    # Name of the item.
+    name: "&e&l%name%"
+    material: SKULL_ITEM
+    # lore of the item.
+    lore:
+      - "&eStatus: &f%status%" # %status% is either "Online" or "Offline".
+      - "&eMuted: &f%muted%" # %muted% is either "Yes" or "No".
+      - "&eBanned: &f%banned%" # %banned% is either "Yes" or "No".
+    # Position of the item in the GUI.
+    slot: 0
+  # Opens the punishment history GUI.
+  punishment-history:
+    # Material of the item. To use custom heads from https://minecraft-heads.com/, use
+    # the format "head-<headID>". The <headID> should be replaced with the "value" from
+    # https://minecraft-heads.com/. For example, to add the "Oak Wood Left Arrow" head...
+    # material: head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ2OWUwNmU1ZGFkZmQ4NGU1ZjNkMWMyMTA2M2YyNTUzYjJmYTk0NWVlMWQ0ZDcxNTJmZGM1NDI1YmMxMmE5In19fQ==
+    material: BOOK
+    # This is the data of the item. Used for items like stained glass panes and coloured wool.
+    data: 0
+    name: "&e&lPunishment History"
+    lore: [ ]
+    slot: 2
+  # Opens the new punishment GUI.
+  new-punishment:
+    material: IRON_AXE
+    data: 0
+    name: "&e&lNew Punishment"
+    lore: [ ]
+    slot: 4
+  # Opens the linked accounts GUI.
+  linked-accounts:
+    material: NAME_TAG
+    data: 0
+    name: "&e&lLinked Accounts"
+    lore: [ ]
+    slot: 6
+  # Opens the connection history GUI.
+  connection-history:
+    material: PAPER
+    data: 0
+    name: "&e&lConnection History"
+    lore: [ ]
+    slot: 8

@@ -36,21 +36,30 @@ bukkit {
     
     bukkit.version = version
     
-//    commands {
-//        register("forceoccurrence") {
-//            description = "Force an occurrence to happen"
-//            permission = "randomoccurrences.forceoccurrence"
-//            usage = "/forceoccurrence <occurrence>"
-//            aliases = listOf("fo")
-//        }
-//    }
+    commands {
+        register("punish") {
+            description = "Opens the punishment GUI"
+            permission = "staffutilities.punish"
+            usage = "/punish <player>"
+            aliases = listOf("pun")
+        }
+    }
     
-//    permissions {
-//        register("randomoccurrences.*") {
-//            children = listOf("randomoccurrences.forceoccurrence", "randomoccurrences.reloadmessages")
-//            default = BukkitPluginDescription.Permission.Default.OP
-//        }
-//    }
+    permissions {
+        register("staffutilities.*") {
+            description = "Allows the player to use all StaffUtilities commands"
+            children = listOf(
+                "staffutilities.punish"
+            )
+            default = BukkitPluginDescription.Permission.Default.OP
+        }
+        
+        register("staffutilities.punish") {
+            description = "Allows the player to use the /punish command"
+            default = BukkitPluginDescription.Permission.Default.OP
+        }
+        
+    }
 }
 
 tasks.withType<KotlinCompile> {

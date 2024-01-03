@@ -10,31 +10,30 @@ import java.util.*
 class ItemBuilder(
     private val item: ItemStack,
 ) {
-    constructor(material: Material, amount: Int = 1, durability: Short) : this(ItemStack(material, amount, durability))
-    
-    fun fromConfigSection(section: ConfigurationSection): ItemBuilder {
-        if (section.contains("head")) return skullFromConfigSection(section)
-        
-        val material = Material.valueOf(section.getString("material").uppercase(Locale.getDefault()))
-    
-        val itemBuilder: ItemBuilder = if (material == Material.SKULL_ITEM) {
-            fromSkull(section.getString("skull-data"))
-        } else {
-            ItemBuilder(
-                Material.valueOf(section.getString("material").uppercase(Locale.getDefault())),
-                section.getInt("amount", 1),
-                section.getInt("data", 0).toShort()
-            )
+    companion object {
+        fun fromConfigSection(section: ConfigurationSection): ItemBuilder {
+            if (section.contains("head")) return skullFromConfigSection(section)
+            
+            val material = Material.valueOf(section.getString("material").uppercase(Locale.getDefault()))
+            
+            val itemBuilder: ItemBuilder = if (material == Material.SKULL_ITEM) {
+                fromSkull(section.getString("skull-data"))
+            } else {
+                ItemBuilder(
+                    Material.valueOf(section.getString("material").uppercase(Locale.getDefault())),
+                    section.getInt("amount", 1),
+                    section.getInt("data", 0).toShort()
+                )
+            }
+            return itemBuilder
+                .setName(section.getString("name", ""))
+                .setLore(section.getStringList("lore"))
+                .addGlow(section.getBoolean("glow"))
         }
-        return itemBuilder
-            .setName(section.getString("name", ""))
-            .setLore(section.getStringList("lore"))
-            .addGlow(section.getBoolean("glow"))
-    }
-    
-    fun fromSkull(value: String, uuid: UUID = UUID.randomUUID()): ItemBuilder {
-        val head = ItemStack(Material.SKULL_ITEM, 1, 3.toShort())
-        val meta = head.itemMeta as SkullMeta
+        
+        fun fromSkull(value: String, uuid: UUID = UUID.randomUUID()): ItemBuilder {
+            val head = ItemStack(Material.SKULL_ITEM, 1, 3.toShort())
+            val meta = head.itemMeta as SkullMeta
 //        val profile = GameProfile(uuid, null)
 //        profile.getProperties().put("textures", Property("textures", value))
 //        val profileField: Field
@@ -51,16 +50,19 @@ class ItemBuilder(
 //        } catch (e: SecurityException) {
 //            e.printStackTrace()
 //        }
-        head.itemMeta = meta
-        return ItemBuilder(head)
+            head.itemMeta = meta
+            return ItemBuilder(head)
+        }
+        
+        fun skullFromConfigSection(section: ConfigurationSection): ItemBuilder {
+            return fromSkull(value = section.getString("head"))
+                .setName(section.getString("name", ""))
+                .setLore(section.getStringList("lore"))
+                .addGlow(section.getBoolean("glow"))
+        }
     }
     
-    fun skullFromConfigSection(section: ConfigurationSection): ItemBuilder {
-        return fromSkull(value = section.getString("head"))
-            .setName(section.getString("name", ""))
-            .setLore(section.getStringList("lore"))
-            .addGlow(section.getBoolean("glow"))
-    }
+    constructor(material: Material, amount: Int = 1, durability: Short) : this(ItemStack(material, amount, durability))
     
     fun setName(name: String): ItemBuilder {
         val meta = item.itemMeta
