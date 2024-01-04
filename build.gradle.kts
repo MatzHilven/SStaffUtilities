@@ -1,13 +1,10 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 plugins {
     kotlin("jvm") version "1.8.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("net.minecrell.plugin-yml.bukkit") version "0.5.1"
-    application
 }
 
 group = "com.matzhilven.staffutilities"
@@ -20,18 +17,26 @@ repositories {
     maven("https://oss.sonatype.org/content/repositories/central")
 }
 
+val exposedVersion: String by project
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.6.0")
+    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("mysql:mysql-connector-java:8.0.33")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+    
     implementation("org.bstats:bstats-bukkit:3.0.1")
 }
 
 bukkit {
-    name = "StaffUtilities"
     main = "com.matzhilven.staffutilities.StaffUtilities"
+    name = "StaffUtilities"
     author = "MatzHilven"
     libraries = listOf(
-        "org.jetbrains.kotlin:kotlin-stdlib:1.7.20",
+        "org.jetbrains.kotlin:kotlin-stdlib:jdk8",
     )
     
     bukkit.version = version
@@ -62,12 +67,17 @@ bukkit {
     }
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-tasks.withType<ShadowJar> {
-    relocate("org.bstats", "com.matzhilven.bstats")
-    archiveClassifier.set("")
-    destinationDirectory.set(File("server\\plugins"))
+tasks {
+    shadowJar {
+        relocate("org.bstats", "com.matzhilven.bstats")
+        destinationDirectory.set(file("C:\\Users\\hilve\\Documents\\Servers\\1.8 - Wine\\plugins"))
+    }
+    compileJava {
+        options.compilerArgs.add("-parameters")
+        options.isFork = true
+        options.forkOptions.executable = "javac"
+    }
+    compileKotlin {
+        kotlinOptions.javaParameters = true
+    }
 }

@@ -1,8 +1,13 @@
 # BungeeCord Settings
 server: HUB
 
-
-# This section of the configuration file is for generic options.
+# Database Settings
+database:
+  host: localhost
+  port: 3306
+  database: staffutilities
+  username: root
+  password:
 
 # This is the number of accounts allowed on one IP address.
 account-limit: 5
@@ -32,19 +37,19 @@ offences:
     # The severity levels for the punishment.
     severity-levels:
       '1':
-        type: ipmute
+        type: IPMute
         duration: 1h
         reason: "Spam [1]"
       '2':
-        type: ipmute
+        type: IPMute
         duration: 1d
         reason: "Spam [2]"
       '3':
-        type: ipmute
+        type: IPMute
         duration: 3d
         reason: "Spam [3]"
       '4':
-        type: ipmute
+        type: IPMute
         duration: permanent
         reason: "Spam [4]"
   InappropriateLanguage:
@@ -55,19 +60,19 @@ offences:
     priority: 3
     severity-levels:
       '1':
-        type: ipmute
+        type: IPMute
         duration: 2h
         reason: "Inappropriate Language [1]"
       '2':
-        type: ipmute
+        type: IPMute
         duration: 3d
         reason: "Inappropriate Language [2]"
       '3':
-        type: ipmute
+        type: IPMute
         duration: 7d
         reason: "Inappropriate Language [3]"
       '4':
-        type: ipmute
+        type: IPMute
         duration: permanent
         reason: "Inappropriate Language [4]"
   LightAdvertising:
@@ -78,19 +83,19 @@ offences:
     priority: 2
     severity-levels:
       '1':
-        type: ipmute
+        type: IPMute
         duration: 2h
         reason: "Light Advertising [1]"
       '2':
-        type: ipmute
+        type: IPMute
         duration: 1d
         reason: "Light Advertising [2]"
       '3':
-        type: ipmute
+        type: IPMute
         duration: 3d
         reason: "Light Advertising [3]"
       '4':
-        type: ipmute
+        type: IPMute
         duration: permanent
         reason: "Light Advertising [4]"
   SuicidalRemarks:
@@ -101,15 +106,15 @@ offences:
     priority: 4
     severity-levels:
       '1':
-        type: ipmute
+        type: IPMute
         duration: 2d
         reason: "Suicidal Remarks [1]"
       '2':
-        type: ipmute
+        type: IPMute
         duration: 7d
         reason: "Suicidal Remarks [2]"
       '3':
-        type: ipmute
+        type: IPMute
         duration: permanent
         reason: "Suicidal Remarks [3]"
   Discrimination:
@@ -120,15 +125,15 @@ offences:
     type: Chat
     severity-levels:
       '1':
-        type: ipmute
+        type: IPMute
         duration: 2d
         reason: "Discrimination [1]"
       '2':
-        type: ipmute
+        type: IPMute
         duration: 7d
         reason: "Discrimination [2]"
       '3':
-        type: ipmute
+        type: IPMute
         duration: permanent
         reason: "Discrimination [3]"
   Advertising:
@@ -139,7 +144,7 @@ offences:
     type: Chat
     severity-levels:
       '1':
-        type: ipmute
+        type: IPMute
         duration: permanent
         reason: "Advertising [1]"
   CommandAbuse:
@@ -150,19 +155,19 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 2h
         reason: "Command Abuse [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: 1d
         reason: "Command Abuse [2]"
       '3':
-        type: ipban
+        type: IPBan
         duration: 3d
         reason: "Command Abuse [3]"
       '4':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Command Abuse [4]"
   MuteEvasion:
@@ -173,19 +178,19 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 6h
         reason: "Mute Evasion [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: 1d
         reason: "Mute Evasion [2]"
       '3':
-        type: ipban
+        type: IPBan
         duration: 3d
         reason: "Mute Evasion [3]"
       '4':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Mute Evasion [4]"
   InappropriateBuilds:
@@ -196,19 +201,19 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 1d
         reason: "Inappropriate Builds [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: 3d
         reason: "Inappropriate Builds [2]"
       '3':
-        type: ipban
+        type: IPBan
         duration: 7d
         reason: "Inappropriate Builds [3]"
       '4':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Inappropriate Builds [4]"
   BugAbuse:
@@ -219,15 +224,15 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 3d
         reason: "Bug Abuse [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: 7d
         reason: "Bug Abuse [2]"
       '3':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Bug Abuse [3]"
   Scamming:
@@ -238,15 +243,15 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 3d
         reason: "Scamming [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: 7d
         reason: "Scamming [2]"
       '3':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Scamming [3]"
   IRLCrossServerTrading:
@@ -257,15 +262,15 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 3d
         reason: "IRL/Cross-Server Trading [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: 7d
         reason: "IRL/Cross-Server Trading [2]"
       '3':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "IRL/Cross-Server Trading [3]"
   IllegalModifications:
@@ -276,11 +281,11 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: 14d
         reason: "Illegal Modifications [1]"
       '2':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Illegal Modifications [2]"
   InappropriateIGNSkin:
@@ -291,7 +296,7 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "Inappropriate IGN/Skin [1]"
   VPNUsage:
@@ -302,7 +307,7 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: ipban
+        type: IPBan
         duration: permanent
         reason: "VPN Usage [1]"
   DDoSIPGrabbing:
@@ -313,7 +318,7 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: blacklist
+        type: Blacklist
         duration: permanent
         reason: "DDoS/IP Grabbing [1]"
   ReleasingPersonalInformation:
@@ -324,7 +329,7 @@ offences:
     type: GamePlay
     severity-levels:
       '1':
-        type: blacklist
+        type: Blacklist
         duration: permanent
         reason: "Releasing Personal Information [1]"
 
@@ -332,12 +337,12 @@ offences:
 # This is the item information for displaying punishments.
 punishment-information-item:
   # Items used for each type of punishment.
-  kick: LEATHER_BOOTS
-  mute: SIGN
-  ipmute: SIGN
-  ban: BARRIER
-  ipban: BARRIER
-  blacklist: BEDROCK
+  Kick: LEATHER_BOOTS
+  Mute: SIGN
+  IPMute: SIGN
+  Ban: BARRIER
+  IPBan: BARRIER
+  Blacklist: BEDROCK
   # The name of the punishment information item.
   name: "&e&l%reason%" # The punishment reason.
   # The lore used for the punishment information item.
@@ -370,9 +375,9 @@ staff-punishment-information-item:
 
 punishment-history-item:
   # Items used for each type of punishment.
-  kick: LEATHER_BOOTS
-  mute: SIGN
-  ipmute: SIGN
-  ban: BARRIER
-  ipban: BARRIER
-  blacklist: BEDROCK
+  Kick: LEATHER_BOOTS
+  Mute: SIGN
+  IPMute: SIGN
+  Ban: BARRIER
+  IPBan: BARRIER
+  Blacklist: BEDROCK

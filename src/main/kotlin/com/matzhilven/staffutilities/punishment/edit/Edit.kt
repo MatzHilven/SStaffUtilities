@@ -1,24 +1,52 @@
 package com.matzhilven.staffutilities.punishment.edit
 
-import java.sql.Timestamp
-import java.util.*
+import com.matzhilven.staffutilities.punishment.Punishment
+import com.matzhilven.staffutilities.punishment.Punishments
+import org.jetbrains.exposed.dao.IntEntity
+import org.jetbrains.exposed.dao.IntEntityClass
+import org.jetbrains.exposed.dao.id.EntityID
+import org.jetbrains.exposed.dao.id.IntIdTable
+import org.jetbrains.exposed.sql.ReferenceOption
+import org.jetbrains.exposed.sql.javatime.datetime
+import java.time.LocalDateTime
 
-data class Edit(
-    val id: Int,
-    val staff: UUID,
-    val timestamp: Timestamp,
-    val previousReason: String? = null,
-    val newReason: String = "",
-    val previousEnd: Timestamp? = null,
-    val newEnd: Timestamp = Timestamp(0),
-    val previousAffectedPlayers: List<UUID>? = null,
-    val newAffectedPlayers: List<UUID> = listOf(),
-    val removed: Boolean = false
-) {
+class Edit(id: EntityID<Int>) : IntEntity(id) {
+    
+    companion object : IntEntityClass<Edit>(Edits)
+    
+    var punishment by Punishment referencedOn Edits.punishment
+    var staff by Edits.staff
+    var timestamp by Edits.timestamp
+    var previousReason by Edits.previousReason
+    var newReason by Edits.newReason
+    var previousEnd by Edits.previousEnd
+    var newEnd by Edits.newEnd
+    var previousAffectedPlayers by Edits.previousAffectedPlayers
+    var newAffectedPlayers by Edits.newAffectedPlayers
+    var removed by Edits.removed
+    
     fun getType(): EditType {
         if (removed) return EditType.REMOVED
         if (previousReason != null) return EditType.REASON
-        if (previousEnd != null && !previousEnd.equals(newEnd)) return EditType.DURATION
+        if (previousEnd != null && previousEnd!! != newEnd) return EditType.DURATION
         return EditType.AFFECTED_PLAYERS
+    }
+}
+
+object Edits : IntIdTable() {
+    val punishment = reference("punishment", Punishments, onDelete = ReferenceOption.CASCADE)
+    val staff = varchar("staff", 36)
+    val timestamp = datetime("timestamp").default(LocalDateTime.now())
+    val previousReason = text("previous_reason").nullable()
+    val newReason = text("new_reason").nullable()
+    val previousEnd = datetime("previous_end").nullable()
+    val newEnd = datetime("new_end").nullable()
+    val previousAffectedPlayers = text("previous_affected_players").nullable()
+    val newAffectedPlayers = text("new_affected_players").nullable()
+    val removed = bool("removed").default(false)
+    
+    init {
+        index(false, punishment)
+        index(false, staff)
     }
 }

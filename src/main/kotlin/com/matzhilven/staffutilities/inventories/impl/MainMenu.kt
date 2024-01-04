@@ -11,7 +11,7 @@ class MainMenu(
 ) : Menu(player, previous) {
     
     init {
-        config = Config(StaffUtilities.instance, "menus/main.yml")
+//        config = Config("menus/main.yml")
     }
     
     override fun setItems() {

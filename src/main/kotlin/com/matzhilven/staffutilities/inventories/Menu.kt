@@ -18,7 +18,7 @@ abstract class Menu(
     
     var config: Config? = null
     
-    private val inventory: Inventory by lazy {
+    private val inv: Inventory by lazy {
         Bukkit.createInventory(this, getSlots(), getName())
     }
     
@@ -26,7 +26,7 @@ abstract class Menu(
     
     fun open() {
         setItems()
-        player.openInventory(inventory)
+        player.openInventory(inv)
     }
     
     fun getName() = config!!.getString("name")
@@ -40,7 +40,7 @@ abstract class Menu(
     abstract fun setItems()
     
     private fun setFillerGlass(glass: ItemStack, slots: List<Int>) {
-        slots.forEach { inventory.setItem(it, glass) }
+        slots.forEach { inv.setItem(it, glass) }
     }
     
     private fun setFillerGlass(section: ConfigurationSection) {
@@ -48,7 +48,7 @@ abstract class Menu(
     }
     
     override fun getInventory(): Inventory {
-        return inventory
+        return inv
     }
     
     
