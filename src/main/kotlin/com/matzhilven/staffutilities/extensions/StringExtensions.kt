@@ -13,3 +13,5 @@ fun List<String>.colorize() = this.map { ChatColor.translateAlternateColorCodes(
 fun List<String>.send(sender: CommandSender) = this.forEach { it.send(sender) }
 
 fun <T : Enum<T>> format(enum: T) = enum.name.lowercase(Locale.getDefault()).replace("_", " ").replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+
+fun String.replace(placeholders: Map<String, String>) = placeholders.entries.fold(this) { acc, (placeholder, replacement) -> acc.replace("%$placeholder%", replacement) }

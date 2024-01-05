@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 class PunishCommand(
-    main: StaffUtilities
+    val main: StaffUtilities
 ) : CommandExecutor {
     
     init {
@@ -17,7 +17,7 @@ class PunishCommand(
     
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender is Player) {
-            MainMenu(sender).open()
+            MainMenu(main, sender).open()
         }
         
         return true

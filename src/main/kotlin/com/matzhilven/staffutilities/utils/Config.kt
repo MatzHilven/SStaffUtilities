@@ -68,8 +68,8 @@ class Config(
         return config.getStringList(path)
     }
     
-    fun getSection(path: String): ConfigurationSection {
-        return config.getConfigurationSection(path)
+    fun getSection(path: String): ConfigurationSection? {
+        return config.getConfigurationSection(path) ?: return null
     }
     
     fun set(path: String, value: Any) {

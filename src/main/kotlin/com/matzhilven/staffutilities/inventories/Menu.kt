@@ -1,5 +1,8 @@
 package com.matzhilven.staffutilities.inventories
 
+import com.matzhilven.staffutilities.StaffUtilities
+import com.matzhilven.staffutilities.extensions.colorize
+import com.matzhilven.staffutilities.extensions.replace
 import com.matzhilven.staffutilities.utils.Config
 import com.matzhilven.staffutilities.utils.ItemBuilder
 import org.bukkit.Bukkit
@@ -12,32 +15,48 @@ import org.bukkit.inventory.InventoryHolder
 import org.bukkit.inventory.ItemStack
 
 abstract class Menu(
+    main: StaffUtilities,
     val player: Player,
     val previous: Menu? = null
 ) : InventoryHolder {
     
-    var config: Config? = null
+    private var config: Config
+    
+    init {
+        config = Config(main, "menus/${javaClass.simpleName.removeSuffix("Menu").lowercase()}.yml")
+    }
     
     private val inv: Inventory by lazy {
         Bukkit.createInventory(this, getSlots(), getName())
     }
     
-    private var slots: Map<Int, String> = HashMap()
+    private var slots: Map<Int, MenuItem> = HashMap()
     
     fun open() {
         setItems()
         player.openInventory(inv)
     }
     
-    fun getName() = config!!.getString("name")
+    private fun getName() = config.getString("name").replace(namePlaceholders()).colorize()
     
-    fun getSlots() = config!!.getInt("size") * 9
+    fun getSlots() = config.getInt("size") * 9
     
     open fun handleClick(event: InventoryClickEvent) {}
     
     open fun handleClose(event: InventoryCloseEvent) {}
     
-    abstract fun setItems()
+    private fun setItems() {
+        config.getSection("items")?.let {
+            it.getKeys(false).forEach { key ->
+                val section = config.getSection("items.$key")!!
+                val item = ItemBuilder.fromConfigSection(section).build()
+                val slot = section.getInt("slot")
+                inv.setItem(slot, item)
+            }
+        }
+        
+        config.getSection("filler")?.let { setFillerGlass(it) }
+    }
     
     private fun setFillerGlass(glass: ItemStack, slots: List<Int>) {
         slots.forEach { inv.setItem(it, glass) }
@@ -47,9 +66,9 @@ abstract class Menu(
         setFillerGlass(ItemBuilder.fromConfigSection(section).build(), section.getIntegerList("slot"))
     }
     
+    abstract fun namePlaceholders(): Map<String, String>
+    
     override fun getInventory(): Inventory {
         return inv
     }
-    
-    
 }

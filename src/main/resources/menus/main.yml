@@ -9,7 +9,7 @@ items:
   player-head:
     # Name of the item.
     name: "&e&l%name%"
-    material: SKULL_ITEM
+    player-head: true
     # lore of the item.
     lore:
       - "&eStatus: &f%status%" # %status% is either "Online" or "Offline".

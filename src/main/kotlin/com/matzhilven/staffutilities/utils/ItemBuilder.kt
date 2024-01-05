@@ -1,64 +1,62 @@
 package com.matzhilven.staffutilities.utils
 
 import com.matzhilven.staffutilities.extensions.colorize
+import com.mojang.authlib.GameProfile
+import com.mojang.authlib.properties.Property
 import org.bukkit.Material
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.SkullMeta
+import java.lang.reflect.Field
 import java.util.*
 
 class ItemBuilder(
     private val item: ItemStack,
 ) {
     companion object {
-        fun fromConfigSection(section: ConfigurationSection): ItemBuilder {
+        fun fromConfigSection(section: ConfigurationSection, player: String = "", uuid: UUID = UUID.randomUUID()): ItemBuilder {
             if (section.contains("head")) return skullFromConfigSection(section)
+            if (section.contains("player-head") && section.getBoolean("player-head")) return playerHead(section, player)
             
             val material = Material.valueOf(section.getString("material").uppercase(Locale.getDefault()))
             
             val itemBuilder: ItemBuilder = if (material == Material.SKULL_ITEM) {
                 fromSkull(section.getString("skull-data"))
             } else {
-                ItemBuilder(
-                    Material.valueOf(section.getString("material").uppercase(Locale.getDefault())),
-                    section.getInt("amount", 1),
-                    section.getInt("data", 0).toShort()
-                )
+                ItemBuilder(Material.valueOf(section.getString("material").uppercase(Locale.getDefault())), section.getInt("amount", 1), section.getInt("data", 0).toShort())
             }
-            return itemBuilder
-                .setName(section.getString("name", ""))
-                .setLore(section.getStringList("lore"))
-                .addGlow(section.getBoolean("glow"))
+            return itemBuilder.setName(section.getString("name", "")).setLore(section.getStringList("lore")).addGlow(section.getBoolean("glow"))
         }
         
         fun fromSkull(value: String, uuid: UUID = UUID.randomUUID()): ItemBuilder {
             val head = ItemStack(Material.SKULL_ITEM, 1, 3.toShort())
             val meta = head.itemMeta as SkullMeta
-//        val profile = GameProfile(uuid, null)
-//        profile.getProperties().put("textures", Property("textures", value))
-//        val profileField: Field
-//        try {
-//            profileField = meta.javaClass.getDeclaredField("profile")
-//            profileField.isAccessible = true
-//            profileField[meta] = profile
-//        } catch (e: IllegalArgumentException) {
-//            e.printStackTrace()
-//        } catch (e: IllegalAccessException) {
-//            e.printStackTrace()
-//        } catch (e: NoSuchFieldException) {
-//            e.printStackTrace()
-//        } catch (e: SecurityException) {
-//            e.printStackTrace()
-//        }
+            val profile = GameProfile(uuid, null)
+            profile.getProperties().put("textures", Property("textures", value))
+            val profileField: Field
+            try {
+                profileField = meta.javaClass.getDeclaredField("profile")
+                profileField.isAccessible = true
+                profileField[meta] = profile
+            } catch (e: IllegalArgumentException) {
+                e.printStackTrace()
+            } catch (e: IllegalAccessException) {
+                e.printStackTrace()
+            } catch (e: NoSuchFieldException) {
+                e.printStackTrace()
+            } catch (e: SecurityException) {
+                e.printStackTrace()
+            }
             head.itemMeta = meta
             return ItemBuilder(head)
         }
         
-        fun skullFromConfigSection(section: ConfigurationSection): ItemBuilder {
-            return fromSkull(value = section.getString("head"))
-                .setName(section.getString("name", ""))
-                .setLore(section.getStringList("lore"))
-                .addGlow(section.getBoolean("glow"))
+        fun skullFromConfigSection(section: ConfigurationSection, uuid: UUID = UUID.randomUUID()): ItemBuilder {
+            return fromSkull(section.getString("head"), uuid).setName(section.getString("name", "")).setLore(section.getStringList("lore")).addGlow(section.getBoolean("glow"))
+        }
+        
+        fun playerHead(section: ConfigurationSection, player: String): ItemBuilder {
+            return ItemBuilder(Material.SKULL_ITEM, 1, 3.toShort()).setName(section.getString("name", "")).setLore(section.getStringList("lore")).addGlow(section.getBoolean("glow")).setOwner(player)
         }
     }
     
@@ -139,6 +137,7 @@ class ItemBuilder(
     
     fun setOwner(owner: String): ItemBuilder {
         val meta = item.itemMeta as SkullMeta
+        if (!meta.hasOwner()) return this
         meta.owner = owner
         item.itemMeta = meta
         return this
