@@ -1,6 +1,7 @@
 package com.matzhilven.staffutilities
 
 import com.matzhilven.staffutilities.commands.PunishCommand
+import com.matzhilven.staffutilities.listeners.InventoryListener
 import com.matzhilven.staffutilities.punishment.AffectedUsers
 import com.matzhilven.staffutilities.punishment.Punishments
 import com.matzhilven.staffutilities.punishment.edit.Edits
@@ -28,6 +29,9 @@ class StaffUtilities : JavaPlugin() {
         
         // Commands
         PunishCommand(this)
+        
+        // Listeners
+        InventoryListener(this)
         
         // bStats
         Metrics(this, 20628)

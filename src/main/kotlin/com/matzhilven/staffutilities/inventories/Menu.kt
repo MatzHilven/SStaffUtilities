@@ -30,7 +30,8 @@ abstract class Menu(
         Bukkit.createInventory(this, getSlots(), getName())
     }
     
-    private var slots: Map<Int, MenuItem> = HashMap()
+    private val slotIDs: HashMap<Int, String> = HashMap()
+    val slots: HashMap<String, MenuItem> = HashMap()
     
     fun open() {
         setItems()
@@ -41,7 +42,10 @@ abstract class Menu(
     
     fun getSlots() = config.getInt("size") * 9
     
-    open fun handleClick(event: InventoryClickEvent) {}
+    fun handleClick(event: InventoryClickEvent) {
+        event.isCancelled = true
+        slots[slotIDs[event.slot]]?.executeOnClick(event)
+    }
     
     open fun handleClose(event: InventoryCloseEvent) {}
     
@@ -52,6 +56,7 @@ abstract class Menu(
                 val item = ItemBuilder.fromConfigSection(section).build()
                 val slot = section.getInt("slot")
                 inv.setItem(slot, item)
+                slotIDs[slot] = key
             }
         }
         
