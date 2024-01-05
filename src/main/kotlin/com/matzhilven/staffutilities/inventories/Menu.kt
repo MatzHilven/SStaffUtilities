@@ -23,7 +23,7 @@ abstract class Menu(
     private var config: Config
     
     init {
-        config = Config(main, "menus/${javaClass.simpleName.removeSuffix("Menu").lowercase()}.yml")
+        config = Config.getInstance(main, "menus/${javaClass.simpleName.removeSuffix("Menu").lowercase()}.yml")
     }
     
     private val inv: Inventory by lazy {

@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.Plugin
 import java.io.File
 
-class Config(
+class Config private constructor(
     val main: Plugin,
     val name: String,
 ) {
@@ -78,5 +78,15 @@ class Config(
     
     fun getConfig(): YamlConfiguration {
         return config
+    }
+    
+    companion object {
+        private var instance: Config? = null
+        
+        fun getInstance(main: Plugin, name: String): Config {
+            return instance ?: synchronized(this) {
+                instance ?: Config(main, name).also { instance = it }
+            }
+        }
     }
 }
