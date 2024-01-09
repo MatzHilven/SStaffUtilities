@@ -17,7 +17,7 @@ class PunishCommand(
     
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender is Player) {
-            MainMenu(main, sender).open()
+            MainMenu(main, sender, sender).open()
         }
         
         return true

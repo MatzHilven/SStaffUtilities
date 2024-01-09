@@ -13,7 +13,7 @@ class Punishment(id: EntityID<Int>) : IntEntity(id) {
     var punished by Punishments.punished
     var punisher by Punishments.punisher
     var offence by Punishments.offence
-    var severityLevel by Punishments.severityLevel
+    var offenceLevel by Punishments.offenceLevel
     var reason by Punishments.reason
     var start by Punishments.start
     var end by Punishments.end
@@ -32,7 +32,7 @@ object Punishments : IntIdTable() {
     val punished = varchar("punished", 36)
     val punisher = varchar("punisher", 36)
     val offence = text("offence")
-    val severityLevel = integer("severity_level")
+    val offenceLevel = integer("offence_level")
     val reason = text("reason")
     val start = datetime("start")
     val end = datetime("end")

@@ -2,10 +2,13 @@ package com.matzhilven.staffutilities.inventories
 
 import com.matzhilven.staffutilities.StaffUtilities
 import com.matzhilven.staffutilities.extensions.colorize
+import com.matzhilven.staffutilities.extensions.owner
 import com.matzhilven.staffutilities.extensions.replace
+import com.matzhilven.staffutilities.extensions.replaceName
 import com.matzhilven.staffutilities.utils.Config
-import com.matzhilven.staffutilities.utils.ItemBuilder
+import com.matzhilven.staffutilities.utils.fromConfigSection
 import org.bukkit.Bukkit
+import org.bukkit.OfflinePlayer
 import org.bukkit.configuration.ConfigurationSection
 import org.bukkit.entity.Player
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -17,21 +20,21 @@ import org.bukkit.inventory.ItemStack
 abstract class Menu(
     main: StaffUtilities,
     val player: Player,
-    val previous: Menu? = null
+    val target: OfflinePlayer? = null,
+    private val previous: Menu? = null
 ) : InventoryHolder {
     
     private var config: Config
-    
-    init {
-        config = Config.getInstance(main, "menus/${javaClass.simpleName.removeSuffix("Menu").lowercase()}.yml")
-    }
-    
+    private val slotIDs: HashMap<Int, String> = HashMap()
     private val inv: Inventory by lazy {
         Bukkit.createInventory(this, getSlots(), getName())
     }
     
-    private val slotIDs: HashMap<Int, String> = HashMap()
     val slots: HashMap<String, MenuItem> = HashMap()
+    
+    init {
+        config = Config.getInstance(main, "menus/${javaClass.simpleName.removeSuffix("Menu").lowercase()}.yml")
+    }
     
     fun open() {
         setItems()
@@ -47,13 +50,18 @@ abstract class Menu(
         slots[slotIDs[event.slot]]?.executeOnClick(event)
     }
     
-    open fun handleClose(event: InventoryCloseEvent) {}
+    open fun handleClose(event: InventoryCloseEvent) {
+        previous?.open()
+    }
     
     private fun setItems() {
         config.getSection("items")?.let {
             it.getKeys(false).forEach { key ->
                 val section = config.getSection("items.$key")!!
-                val item = ItemBuilder.fromConfigSection(section).build()
+                val item = fromConfigSection(section)
+                    .owner(target?.name ?: "")
+                    .replace(slots[key]?.getPlaceholders() ?: HashMap())
+                    .replaceName("name", "test")
                 val slot = section.getInt("slot")
                 inv.setItem(slot, item)
                 slotIDs[slot] = key
@@ -68,7 +76,7 @@ abstract class Menu(
     }
     
     private fun setFillerGlass(section: ConfigurationSection) {
-        setFillerGlass(ItemBuilder.fromConfigSection(section).build(), section.getIntegerList("slot"))
+        setFillerGlass(fromConfigSection(section), section.getIntegerList("slot"))
     }
     
     abstract fun namePlaceholders(): Map<String, String>

@@ -7,7 +7,7 @@ abstract class PaginatedMenu(
     main: StaffUtilities,
     player: Player,
     previous: Menu? = null
-) : Menu(main, player, previous) {
+) : Menu(main, player, previous = previous) {
     
     var page: Int = 0
     var index: Int = 0

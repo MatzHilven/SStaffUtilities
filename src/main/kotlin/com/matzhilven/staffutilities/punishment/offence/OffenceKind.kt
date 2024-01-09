@@ -1,6 +1,6 @@
 package com.matzhilven.staffutilities.punishment.offence
 
-enum class OffenceType {
+enum class OffenceKind {
     Chat,
     Gameplay,
 }

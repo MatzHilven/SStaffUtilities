@@ -1,6 +1,6 @@
 package com.matzhilven.staffutilities.punishment.severity
 
-enum class SeverityType {
+enum class OffenceType {
     Kick,
     Mute,
     IPMute,
