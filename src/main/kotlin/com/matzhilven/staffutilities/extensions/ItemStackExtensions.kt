@@ -103,7 +103,7 @@ fun ItemStack.replaceLore(placeholder: String, value: String): ItemStack {
     val meta = itemMeta
     val lore = meta.lore
     for (i in lore!!.indices) {
-        lore[i] = lore[i].replace(placeholder, value)
+        lore[i] = lore[i].replace("%$placeholder%", value.colorize())
     }
     meta.lore = lore
     itemMeta = meta
@@ -112,7 +112,7 @@ fun ItemStack.replaceLore(placeholder: String, value: String): ItemStack {
 
 fun ItemStack.replaceName(placeholder: String, value: String): ItemStack {
     val meta = itemMeta
-    meta.displayName = meta.displayName.replace(placeholder, value)
+    meta.displayName = meta.displayName.replace("%$placeholder%", value.colorize())
     itemMeta = meta
     return this
 }

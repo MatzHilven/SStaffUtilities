@@ -3,7 +3,6 @@ package com.matzhilven.staffutilities.utils
 import com.matzhilven.staffutilities.extensions.glow
 import com.matzhilven.staffutilities.extensions.lore
 import com.matzhilven.staffutilities.extensions.name
-import com.matzhilven.staffutilities.extensions.owner
 import com.mojang.authlib.GameProfile
 import com.mojang.authlib.properties.Property
 import org.bukkit.Material
@@ -14,10 +13,10 @@ import java.lang.reflect.Field
 import java.util.*
 
 fun fromConfigSection(
-    section: ConfigurationSection, player: String = ""
+    section: ConfigurationSection
 ): ItemStack {
     if (section.contains("head")) return skullFromConfigSection(section)
-    if (section.contains("player-head") && section.getBoolean("player-head")) return playerHead(section, player)
+    if (section.contains("player-head") && section.getBoolean("player-head")) return playerHead(section)
     
     val material = Material.valueOf(section.getString("material").uppercase(Locale.getDefault()))
     
@@ -58,12 +57,16 @@ fun fromSkull(value: String, uuid: UUID = UUID.randomUUID()): ItemStack {
 }
 
 fun skullFromConfigSection(section: ConfigurationSection, uuid: UUID = UUID.randomUUID()): ItemStack {
-    return fromSkull(section.getString("head"), uuid).name(section.getString("name", ""))
-        .lore(section.getStringList("lore")).glow(section.getBoolean("glow"))
+    return fromSkull(section.getString("head"), uuid)
+        .name(section.getString("name", ""))
+        .lore(section.getStringList("lore"))
+        .glow(section.getBoolean("glow"))
 }
 
-fun playerHead(section: ConfigurationSection, player: String): ItemStack {
-    return ItemStack(Material.SKULL_ITEM, 1, 3.toShort()).name(section.getString("name", ""))
-        .lore(section.getStringList("lore")).glow(section.getBoolean("glow")).owner(player)
+fun playerHead(section: ConfigurationSection): ItemStack {
+    return ItemStack(Material.SKULL_ITEM, 1, 3.toShort())
+        .name(section.getString("name", ""))
+        .lore(section.getStringList("lore"))
+        .glow(section.getBoolean("glow"))
 }
 

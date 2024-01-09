@@ -1,6 +1,8 @@
 package com.matzhilven.staffutilities.inventories.impl
 
 import com.matzhilven.staffutilities.StaffUtilities
+import com.matzhilven.staffutilities.extensions.banned
+import com.matzhilven.staffutilities.extensions.muted
 import com.matzhilven.staffutilities.extensions.send
 import com.matzhilven.staffutilities.inventories.Menu
 import com.matzhilven.staffutilities.inventories.MenuItem
@@ -23,8 +25,8 @@ class MainMenu(
                 mapOf(
                     "name" to target.name,
                     "status" to target.isOnline.let { if (it) "&aOnline" else "&cOffline" },
-                    "banned" to target.isBanned.let { if (it) "&cBanned" else "&aNot Banned" },
-                    "muted" to target.isBanned.let { if (it) "&cMuted" else "&aNot Muted" },
+                    "banned" to player.banned.let { if (it) "&cBanned" else "&aNot Banned" },
+                    "muted" to target.muted.let { if (it) "&cMuted" else "&aNot Muted" },
                 )
             )
     }
